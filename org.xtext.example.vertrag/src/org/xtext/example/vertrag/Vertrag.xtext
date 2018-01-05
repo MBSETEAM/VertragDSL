@@ -27,8 +27,6 @@ Vertrag:
 // Definition von Gearet
 Gearet :
 	'gearet' name=ID '{'
-		
-		
 		('system' system=ID)     ? &
 		('marke' marke=ID)       ? &
 		('speicher' speicher=INT)? &
