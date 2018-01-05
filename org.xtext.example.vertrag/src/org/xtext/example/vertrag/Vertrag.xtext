@@ -34,7 +34,6 @@ Handy :
 		('system' system=ID)     ? &
 		('marke' marke=ID)       ? &
 		('speicher' speicher=INT)? &
-		
 	'}'
 ;
 	
