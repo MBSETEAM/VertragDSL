@@ -25,6 +25,12 @@ class MyDslGenerator extends AbstractGenerator {
 	
 	
 	def compile() {
-		
+		'''
+		public class Main {
+			public static void main(String[] args) {
+				
+			}
+		}
+		'''
 	}
 }
