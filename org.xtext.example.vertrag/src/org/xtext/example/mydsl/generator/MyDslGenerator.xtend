@@ -26,6 +26,21 @@ class MyDslGenerator extends AbstractGenerator {
 	
 	def compile() {
 		'''
+		import java.io.IOException;
+		import java.net.MalformedURLException;
+		
+		import org.openqa.selenium.By;
+		import org.openqa.selenium.WebDriver;
+		import org.openqa.selenium.WebElement;
+		import org.openqa.selenium.htmlunit.HtmlUnitDriver;
+		import org.openqa.selenium.support.ui.ExpectedCondition;
+		import org.openqa.selenium.support.ui.WebDriverWait;
+		
+		import com.gargoylesoftware.htmlunit.FailingHttpStatusCodeException;
+		import com.gargoylesoftware.htmlunit.WebClient;
+		import com.gargoylesoftware.htmlunit.html.HtmlPage;
+		
+		
 		public class Main {
 			public static void main(String[] args) {
 				
