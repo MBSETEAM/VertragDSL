@@ -7,6 +7,7 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.xtext.example.mydsl.myDsl.Vertrag
 
 /**
  * Generates code from your model files on save.
@@ -24,7 +25,7 @@ class MyDslGenerator extends AbstractGenerator {
 	}
 	
 	
-	def compile() {
+	def compile(Vertrag vertrag) {
 		'''
 		import java.io.IOException;
 		import java.net.MalformedURLException;
