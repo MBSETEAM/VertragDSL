@@ -12,8 +12,7 @@ terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 terminal INT returns ecore::EInt: ('0'..'9')+;
 terminal FLOAT returns ecore::EFloat: INT ('.' INT)?;
 
-// * eine oder mehrere
-// & Die Reihenfolge spielt keine rolle
+// Definition von Vertrag
 Vertrag:
 	'Vertrag' name=ID'{'
 		('mindestvertragslaufzeit' mindestvertragslaufzeit=INT)* &
@@ -26,7 +25,6 @@ Vertrag:
 ;
 
 // Definition von Gearet
-// 
 Gearet :
 	'gearet' name=ID '{'
 		system?=ID

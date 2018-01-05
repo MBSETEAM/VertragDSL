@@ -23,7 +23,7 @@ class MyDslGenerator extends AbstractGenerator {
 //				.join(', '))
 	}
 	
-	// return String
+	
 	def compile() {
 		
 	}
