@@ -1,0 +1,31 @@
+grammar org.xtext.example.mydsl.MyDsl with org.eclipse.xtext.common.Terminals
+generate myDsl "http://www.xtext.org/example/vertrag/Vertrag"
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+Model:
+	vertrags+=Vertrag*;
+	
+//myterminal
+terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
+terminal INT returns ecore::EInt: ('0'..'9')+;
+terminal FLOAT returns ecore::EFloat: INT '.' INT;
+// committtt
+//test
+Vertrag:
+	'Vertrag' name=ID'{'
+		('mindestvertragslaufzeit' mindestvertragslaufzeit=INT)* &
+		('datenvolumen'datenvolumen=INT)* &
+		('monatl_kosten'monatl_kosten=FLOAT)* &
+		('netzanbieter' netzanbieter=ID)* &
+		('internetseite' internetseite=ID)* &
+		
+	'}'
+;
+// Push
+Gearet :
+	'gearet' name=ID '{'
+		system?=ID
+		marke?=ID
+		speicher?=ID
+	'}'
+;
+	
