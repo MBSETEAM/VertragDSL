@@ -11,8 +11,9 @@ package org.xtext.example.mydsl.validation
  */
 class MyDslValidator extends AbstractMyDslValidator {
 	
+	
 //	public static val INVALID_NAME = 'invalidName'
-//
+//  Hier ist fuer Constraints
 //	@Check
 //	def checkGreetingStartsWithCapital(Greeting greeting) {
 //		if (!Character.isUpperCase(greeting.name.charAt(0))) {
