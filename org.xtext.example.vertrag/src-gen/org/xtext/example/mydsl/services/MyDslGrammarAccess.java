@@ -6,6 +6,7 @@ package org.xtext.example.mydsl.services;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 import java.util.List;
+import org.eclipse.xtext.Alternatives;
 import org.eclipse.xtext.Assignment;
 import org.eclipse.xtext.Grammar;
 import org.eclipse.xtext.GrammarUtil;
@@ -24,18 +25,38 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	
 	public class ModelElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Model");
-		private final Assignment cVertragsAssignment = (Assignment)rule.eContents().get(1);
-		private final RuleCall cVertragsVertragParserRuleCall_0 = (RuleCall)cVertragsAssignment.eContents().get(0);
+		private final Assignment cElementsAssignment = (Assignment)rule.eContents().get(1);
+		private final RuleCall cElementsElementParserRuleCall_0 = (RuleCall)cElementsAssignment.eContents().get(0);
 		
+		//// Modell
 		//Model:
-		//	vertrags+=Vertrag*;
+		//	elements+=Element*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//vertrags+=Vertrag*
-		public Assignment getVertragsAssignment() { return cVertragsAssignment; }
+		//elements+=Element*
+		public Assignment getElementsAssignment() { return cElementsAssignment; }
+		
+		//Element
+		public RuleCall getElementsElementParserRuleCall_0() { return cElementsElementParserRuleCall_0; }
+	}
+	public class ElementElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Element");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final RuleCall cVertragParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
+		private final RuleCall cHandyParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
+		
+		//Element:
+		//	Vertrag | Handy;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//Vertrag | Handy
+		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Vertrag
-		public RuleCall getVertragsVertragParserRuleCall_0() { return cVertragsVertragParserRuleCall_0; }
+		public RuleCall getVertragParserRuleCall_0() { return cVertragParserRuleCall_0; }
+		
+		//Handy
+		public RuleCall getHandyParserRuleCall_1() { return cHandyParserRuleCall_1; }
 	}
 	public class VertragElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Vertrag");
@@ -67,8 +88,7 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cInternetseiteIDTerminalRuleCall_4_1_0 = (RuleCall)cInternetseiteAssignment_4_1.eContents().get(0);
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cUnorderedGroup.eContents().get(5);
 		
-		//// committtt
-		////test
+		//// Definition von Vertrag
 		//Vertrag:
 		//	'Vertrag' name=ID '{' ('mindestvertragslaufzeit' mindestvertragslaufzeit=INT)* & ('datenvolumen' datenvolumen=INT)* &
 		//	('monatl_kosten' monatl_kosten=FLOAT)* & ('netzanbieter' netzanbieter=ID)* & ('internetseite' internetseite=ID)* &
@@ -157,74 +177,100 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 	}
-	public class GearetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Gearet");
-		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cGearetKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cSystemAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cSystemIDTerminalRuleCall_3_0 = (RuleCall)cSystemAssignment_3.eContents().get(0);
-		private final Assignment cMarkeAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cMarkeIDTerminalRuleCall_4_0 = (RuleCall)cMarkeAssignment_4.eContents().get(0);
-		private final Assignment cSpeicherAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cSpeicherIDTerminalRuleCall_5_0 = (RuleCall)cSpeicherAssignment_5.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
+	public class HandyElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.Handy");
+		private final UnorderedGroup cUnorderedGroup = (UnorderedGroup)rule.eContents().get(1);
+		private final Group cGroup_0 = (Group)cUnorderedGroup.eContents().get(0);
+		private final Keyword cHandyKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
+		private final Assignment cNameAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
+		private final RuleCall cNameIDTerminalRuleCall_0_1_0 = (RuleCall)cNameAssignment_0_1.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_0_2 = (Keyword)cGroup_0.eContents().get(2);
+		private final Group cGroup_0_3 = (Group)cGroup_0.eContents().get(3);
+		private final Keyword cSystemKeyword_0_3_0 = (Keyword)cGroup_0_3.eContents().get(0);
+		private final Assignment cSystemAssignment_0_3_1 = (Assignment)cGroup_0_3.eContents().get(1);
+		private final RuleCall cSystemIDTerminalRuleCall_0_3_1_0 = (RuleCall)cSystemAssignment_0_3_1.eContents().get(0);
+		private final Group cGroup_1 = (Group)cUnorderedGroup.eContents().get(1);
+		private final Keyword cMarkeKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
+		private final Assignment cMarkeAssignment_1_1 = (Assignment)cGroup_1.eContents().get(1);
+		private final RuleCall cMarkeIDTerminalRuleCall_1_1_0 = (RuleCall)cMarkeAssignment_1_1.eContents().get(0);
+		private final Group cGroup_2 = (Group)cUnorderedGroup.eContents().get(2);
+		private final Keyword cSpeicherKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Assignment cSpeicherAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
+		private final RuleCall cSpeicherINTTerminalRuleCall_2_1_0 = (RuleCall)cSpeicherAssignment_2_1.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_3 = (Keyword)cUnorderedGroup.eContents().get(3);
 		
-		//// Push
-		//Gearet:
-		//	'gearet' name=ID '{'
-		//	system?=ID
-		//	marke?=ID
-		//	speicher?=ID
+		//// Definition von Gearet Github
+		//Handy:
+		//	'handy' name=ID '{' ('system' system=ID)? & ('marke' marke=ID)? & ('speicher' speicher=INT)? &
 		//	'}';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'gearet' name=ID '{' system?=ID marke?=ID speicher?=ID '}'
-		public Group getGroup() { return cGroup; }
+		//'handy' name=ID '{' ('system' system=ID)? & ('marke' marke=ID)? & ('speicher' speicher=INT)? & '}'
+		public UnorderedGroup getUnorderedGroup() { return cUnorderedGroup; }
 		
-		//'gearet'
-		public Keyword getGearetKeyword_0() { return cGearetKeyword_0; }
+		//'handy' name=ID '{' ('system' system=ID)?
+		public Group getGroup_0() { return cGroup_0; }
+		
+		//'handy'
+		public Keyword getHandyKeyword_0_0() { return cHandyKeyword_0_0; }
 		
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_0_1() { return cNameAssignment_0_1; }
 		
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_0_1_0() { return cNameIDTerminalRuleCall_0_1_0; }
 		
 		//'{'
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		public Keyword getLeftCurlyBracketKeyword_0_2() { return cLeftCurlyBracketKeyword_0_2; }
 		
-		//system?=ID
-		public Assignment getSystemAssignment_3() { return cSystemAssignment_3; }
+		//('system' system=ID)?
+		public Group getGroup_0_3() { return cGroup_0_3; }
 		
-		//ID
-		public RuleCall getSystemIDTerminalRuleCall_3_0() { return cSystemIDTerminalRuleCall_3_0; }
+		//'system'
+		public Keyword getSystemKeyword_0_3_0() { return cSystemKeyword_0_3_0; }
 		
-		//marke?=ID
-		public Assignment getMarkeAssignment_4() { return cMarkeAssignment_4; }
-		
-		//ID
-		public RuleCall getMarkeIDTerminalRuleCall_4_0() { return cMarkeIDTerminalRuleCall_4_0; }
-		
-		//speicher?=ID
-		public Assignment getSpeicherAssignment_5() { return cSpeicherAssignment_5; }
+		//system=ID
+		public Assignment getSystemAssignment_0_3_1() { return cSystemAssignment_0_3_1; }
 		
 		//ID
-		public RuleCall getSpeicherIDTerminalRuleCall_5_0() { return cSpeicherIDTerminalRuleCall_5_0; }
+		public RuleCall getSystemIDTerminalRuleCall_0_3_1_0() { return cSystemIDTerminalRuleCall_0_3_1_0; }
+		
+		//('marke' marke=ID)?
+		public Group getGroup_1() { return cGroup_1; }
+		
+		//'marke'
+		public Keyword getMarkeKeyword_1_0() { return cMarkeKeyword_1_0; }
+		
+		//marke=ID
+		public Assignment getMarkeAssignment_1_1() { return cMarkeAssignment_1_1; }
+		
+		//ID
+		public RuleCall getMarkeIDTerminalRuleCall_1_1_0() { return cMarkeIDTerminalRuleCall_1_1_0; }
+		
+		//('speicher' speicher=INT)?
+		public Group getGroup_2() { return cGroup_2; }
+		
+		//'speicher'
+		public Keyword getSpeicherKeyword_2_0() { return cSpeicherKeyword_2_0; }
+		
+		//speicher=INT
+		public Assignment getSpeicherAssignment_2_1() { return cSpeicherAssignment_2_1; }
+		
+		//INT
+		public RuleCall getSpeicherINTTerminalRuleCall_2_1_0() { return cSpeicherINTTerminalRuleCall_2_1_0; }
 		
 		//'}'
-		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
+		public Keyword getRightCurlyBracketKeyword_3() { return cRightCurlyBracketKeyword_3; }
 	}
 	
 	
 	private final ModelElements pModel;
+	private final ElementElements pElement;
 	private final TerminalRule tID;
 	private final TerminalRule tINT;
 	private final TerminalRule tFLOAT;
 	private final VertragElements pVertrag;
-	private final GearetElements pGearet;
+	private final HandyElements pHandy;
 	
 	private final Grammar grammar;
 	
@@ -236,11 +282,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
 		this.pModel = new ModelElements();
+		this.pElement = new ElementElements();
 		this.tID = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.ID");
 		this.tINT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.INT");
 		this.tFLOAT = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "org.xtext.example.mydsl.MyDsl.FLOAT");
 		this.pVertrag = new VertragElements();
-		this.pGearet = new GearetElements();
+		this.pHandy = new HandyElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -270,14 +317,25 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	
+	//// Modell
 	//Model:
-	//	vertrags+=Vertrag*;
+	//	elements+=Element*;
 	public ModelElements getModelAccess() {
 		return pModel;
 	}
 	
 	public ParserRule getModelRule() {
 		return getModelAccess().getRule();
+	}
+	
+	//Element:
+	//	Vertrag | Handy;
+	public ElementElements getElementAccess() {
+		return pElement;
+	}
+	
+	public ParserRule getElementRule() {
+		return getElementAccess().getRule();
 	}
 	
 	//terminal ID:
@@ -293,13 +351,12 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 	}
 	
 	//terminal FLOAT returns ecore::EFloat:
-	//	INT '.' INT;
+	//	INT ('.' INT)?;
 	public TerminalRule getFLOATRule() {
 		return tFLOAT;
 	}
 	
-	//// committtt
-	////test
+	//// Definition von Vertrag
 	//Vertrag:
 	//	'Vertrag' name=ID '{' ('mindestvertragslaufzeit' mindestvertragslaufzeit=INT)* & ('datenvolumen' datenvolumen=INT)* &
 	//	('monatl_kosten' monatl_kosten=FLOAT)* & ('netzanbieter' netzanbieter=ID)* & ('internetseite' internetseite=ID)* &
@@ -312,19 +369,16 @@ public class MyDslGrammarAccess extends AbstractGrammarElementFinder {
 		return getVertragAccess().getRule();
 	}
 	
-	//// Push
-	//Gearet:
-	//	'gearet' name=ID '{'
-	//	system?=ID
-	//	marke?=ID
-	//	speicher?=ID
+	//// Definition von Gearet Github
+	//Handy:
+	//	'handy' name=ID '{' ('system' system=ID)? & ('marke' marke=ID)? & ('speicher' speicher=INT)? &
 	//	'}';
-	public GearetElements getGearetAccess() {
-		return pGearet;
+	public HandyElements getHandyAccess() {
+		return pHandy;
 	}
 	
-	public ParserRule getGearetRule() {
-		return getGearetAccess().getRule();
+	public ParserRule getHandyRule() {
+		return getHandyAccess().getRule();
 	}
 	
 	//terminal STRING:

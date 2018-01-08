@@ -78,22 +78,58 @@ ruleModel returns [EObject current=null]
 	(
 		(
 			{
-				newCompositeNode(grammarAccess.getModelAccess().getVertragsVertragParserRuleCall_0());
+				newCompositeNode(grammarAccess.getModelAccess().getElementsElementParserRuleCall_0());
 			}
-			lv_vertrags_0_0=ruleVertrag
+			lv_elements_0_0=ruleElement
 			{
 				if ($current==null) {
 					$current = createModelElementForParent(grammarAccess.getModelRule());
 				}
 				add(
 					$current,
-					"vertrags",
-					lv_vertrags_0_0,
-					"org.xtext.example.mydsl.MyDsl.Vertrag");
+					"elements",
+					lv_elements_0_0,
+					"org.xtext.example.mydsl.MyDsl.Element");
 				afterParserOrEnumRuleCall();
 			}
 		)
 	)*
+;
+
+// Entry rule entryRuleElement
+entryRuleElement returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getElementRule()); }
+	iv_ruleElement=ruleElement
+	{ $current=$iv_ruleElement.current; }
+	EOF;
+
+// Rule Element
+ruleElement returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		{
+			newCompositeNode(grammarAccess.getElementAccess().getVertragParserRuleCall_0());
+		}
+		this_Vertrag_0=ruleVertrag
+		{
+			$current = $this_Vertrag_0.current;
+			afterParserOrEnumRuleCall();
+		}
+		    |
+		{
+			newCompositeNode(grammarAccess.getElementAccess().getHandyParserRuleCall_1());
+		}
+		this_Handy_1=ruleHandy
+		{
+			$current = $this_Handy_1.current;
+			afterParserOrEnumRuleCall();
+		}
+	)
 ;
 
 // Entry rule entryRuleVertrag
@@ -336,11 +372,185 @@ ruleVertrag returns [EObject current=null]
 	)
 ;
 
+// Entry rule entryRuleHandy
+entryRuleHandy returns [EObject current=null]:
+	{ newCompositeNode(grammarAccess.getHandyRule()); }
+	iv_ruleHandy=ruleHandy
+	{ $current=$iv_ruleHandy.current; }
+	EOF;
+
+// Rule Handy
+ruleHandy returns [EObject current=null]
+@init {
+	enterRule();
+}
+@after {
+	leaveRule();
+}:
+	(
+		(
+			{ 
+			  getUnorderedGroupHelper().enter(grammarAccess.getHandyAccess().getUnorderedGroup());
+			}
+			(
+				(
+		(
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getHandyAccess().getUnorderedGroup(), 0)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getHandyAccess().getUnorderedGroup(), 0);
+				}
+							({true}?=>(otherlv_1='handy'
+							{
+								newLeafNode(otherlv_1, grammarAccess.getHandyAccess().getHandyKeyword_0_0());
+							}
+							(
+								(
+									lv_name_2_0=RULE_ID
+									{
+										newLeafNode(lv_name_2_0, grammarAccess.getHandyAccess().getNameIDTerminalRuleCall_0_1_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getHandyRule());
+										}
+										setWithLastConsumed(
+											$current,
+											"name",
+											lv_name_2_0,
+											"org.xtext.example.mydsl.MyDsl.ID");
+									}
+								)
+							)
+							otherlv_3='{'
+							{
+								newLeafNode(otherlv_3, grammarAccess.getHandyAccess().getLeftCurlyBracketKeyword_0_2());
+							}
+							(
+								otherlv_4='system'
+								{
+									newLeafNode(otherlv_4, grammarAccess.getHandyAccess().getSystemKeyword_0_3_0());
+								}
+								(
+									(
+										lv_system_5_0=RULE_ID
+										{
+											newLeafNode(lv_system_5_0, grammarAccess.getHandyAccess().getSystemIDTerminalRuleCall_0_3_1_0());
+										}
+										{
+											if ($current==null) {
+												$current = createModelElement(grammarAccess.getHandyRule());
+											}
+											setWithLastConsumed(
+												$current,
+												"system",
+												lv_system_5_0,
+												"org.xtext.example.mydsl.MyDsl.ID");
+										}
+									)
+								)
+							)?
+							))
+				{ 
+					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getHandyAccess().getUnorderedGroup());
+				}
+			)
+		)|
+		(
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getHandyAccess().getUnorderedGroup(), 1)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getHandyAccess().getUnorderedGroup(), 1);
+				}
+							({true}?=>(otherlv_6='marke'
+							{
+								newLeafNode(otherlv_6, grammarAccess.getHandyAccess().getMarkeKeyword_1_0());
+							}
+							(
+								(
+									lv_marke_7_0=RULE_ID
+									{
+										newLeafNode(lv_marke_7_0, grammarAccess.getHandyAccess().getMarkeIDTerminalRuleCall_1_1_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getHandyRule());
+										}
+										setWithLastConsumed(
+											$current,
+											"marke",
+											lv_marke_7_0,
+											"org.xtext.example.mydsl.MyDsl.ID");
+									}
+								)
+							)
+							))
+				{ 
+					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getHandyAccess().getUnorderedGroup());
+				}
+			)
+		)|
+		(
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getHandyAccess().getUnorderedGroup(), 2)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getHandyAccess().getUnorderedGroup(), 2);
+				}
+							({true}?=>(otherlv_8='speicher'
+							{
+								newLeafNode(otherlv_8, grammarAccess.getHandyAccess().getSpeicherKeyword_2_0());
+							}
+							(
+								(
+									lv_speicher_9_0=RULE_INT
+									{
+										newLeafNode(lv_speicher_9_0, grammarAccess.getHandyAccess().getSpeicherINTTerminalRuleCall_2_1_0());
+									}
+									{
+										if ($current==null) {
+											$current = createModelElement(grammarAccess.getHandyRule());
+										}
+										setWithLastConsumed(
+											$current,
+											"speicher",
+											lv_speicher_9_0,
+											"org.xtext.example.mydsl.MyDsl.INT");
+									}
+								)
+							)
+							))
+				{ 
+					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getHandyAccess().getUnorderedGroup());
+				}
+			)
+		)|
+		(
+			{getUnorderedGroupHelper().canSelect(grammarAccess.getHandyAccess().getUnorderedGroup(), 3)}?=>(
+				{
+					getUnorderedGroupHelper().select(grammarAccess.getHandyAccess().getUnorderedGroup(), 3);
+				}
+							({true}?=>(otherlv_10='}'
+							{
+								newLeafNode(otherlv_10, grammarAccess.getHandyAccess().getRightCurlyBracketKeyword_3());
+							}
+							))
+				{ 
+					getUnorderedGroupHelper().returnFromSelection(grammarAccess.getHandyAccess().getUnorderedGroup());
+				}
+			)
+		)
+				)+
+				{getUnorderedGroupHelper().canLeave(grammarAccess.getHandyAccess().getUnorderedGroup())}?
+			)
+		)
+			{ 
+			  getUnorderedGroupHelper().leave(grammarAccess.getHandyAccess().getUnorderedGroup());
+			}
+	)
+;
+
 RULE_ID : '^'? ('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
 
 RULE_INT : ('0'..'9')+;
 
-RULE_FLOAT : RULE_INT '.' RULE_INT;
+RULE_FLOAT : RULE_INT ('.' RULE_INT)?;
 
 RULE_STRING : ('"' ('\\' .|~(('\\'|'"')))* '"'|'\'' ('\\' .|~(('\\'|'\'')))* '\'');
 

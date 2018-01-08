@@ -10,7 +10,8 @@ import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.xtext.example.mydsl.myDsl.Gearet;
+import org.xtext.example.mydsl.myDsl.Element;
+import org.xtext.example.mydsl.myDsl.Handy;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslFactory;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
@@ -36,6 +37,13 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass elementEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass vertragEClass = null;
 
   /**
@@ -43,7 +51,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  private EClass gearetEClass = null;
+  private EClass handyEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -123,9 +131,29 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EReference getModel_Vertrags()
+  public EReference getModel_Elements()
   {
     return (EReference)modelEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EClass getElement()
+  {
+    return elementEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public EAttribute getElement_Name()
+  {
+    return (EAttribute)elementEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -143,7 +171,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Name()
+  public EAttribute getVertrag_Mindestvertragslaufzeit()
   {
     return (EAttribute)vertragEClass.getEStructuralFeatures().get(0);
   }
@@ -153,7 +181,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Mindestvertragslaufzeit()
+  public EAttribute getVertrag_Datenvolumen()
   {
     return (EAttribute)vertragEClass.getEStructuralFeatures().get(1);
   }
@@ -163,7 +191,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Datenvolumen()
+  public EAttribute getVertrag_Monatl_kosten()
   {
     return (EAttribute)vertragEClass.getEStructuralFeatures().get(2);
   }
@@ -173,7 +201,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Monatl_kosten()
+  public EAttribute getVertrag_Netzanbieter()
   {
     return (EAttribute)vertragEClass.getEStructuralFeatures().get(3);
   }
@@ -183,7 +211,7 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Netzanbieter()
+  public EAttribute getVertrag_Internetseite()
   {
     return (EAttribute)vertragEClass.getEStructuralFeatures().get(4);
   }
@@ -193,9 +221,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getVertrag_Internetseite()
+  public EClass getHandy()
   {
-    return (EAttribute)vertragEClass.getEStructuralFeatures().get(5);
+    return handyEClass;
   }
 
   /**
@@ -203,9 +231,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EClass getGearet()
+  public EAttribute getHandy_System()
   {
-    return gearetEClass;
+    return (EAttribute)handyEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -213,9 +241,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGearet_Name()
+  public EAttribute getHandy_Marke()
   {
-    return (EAttribute)gearetEClass.getEStructuralFeatures().get(0);
+    return (EAttribute)handyEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -223,29 +251,9 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
    * <!-- end-user-doc -->
    * @generated
    */
-  public EAttribute getGearet_System()
+  public EAttribute getHandy_Speicher()
   {
-    return (EAttribute)gearetEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getGearet_Marke()
-  {
-    return (EAttribute)gearetEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public EAttribute getGearet_Speicher()
-  {
-    return (EAttribute)gearetEClass.getEStructuralFeatures().get(3);
+    return (EAttribute)handyEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -279,21 +287,22 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
 
     // Create classes and their features
     modelEClass = createEClass(MODEL);
-    createEReference(modelEClass, MODEL__VERTRAGS);
+    createEReference(modelEClass, MODEL__ELEMENTS);
+
+    elementEClass = createEClass(ELEMENT);
+    createEAttribute(elementEClass, ELEMENT__NAME);
 
     vertragEClass = createEClass(VERTRAG);
-    createEAttribute(vertragEClass, VERTRAG__NAME);
     createEAttribute(vertragEClass, VERTRAG__MINDESTVERTRAGSLAUFZEIT);
     createEAttribute(vertragEClass, VERTRAG__DATENVOLUMEN);
     createEAttribute(vertragEClass, VERTRAG__MONATL_KOSTEN);
     createEAttribute(vertragEClass, VERTRAG__NETZANBIETER);
     createEAttribute(vertragEClass, VERTRAG__INTERNETSEITE);
 
-    gearetEClass = createEClass(GEARET);
-    createEAttribute(gearetEClass, GEARET__NAME);
-    createEAttribute(gearetEClass, GEARET__SYSTEM);
-    createEAttribute(gearetEClass, GEARET__MARKE);
-    createEAttribute(gearetEClass, GEARET__SPEICHER);
+    handyEClass = createEClass(HANDY);
+    createEAttribute(handyEClass, HANDY__SYSTEM);
+    createEAttribute(handyEClass, HANDY__MARKE);
+    createEAttribute(handyEClass, HANDY__SPEICHER);
   }
 
   /**
@@ -325,24 +334,27 @@ public class MyDslPackageImpl extends EPackageImpl implements MyDslPackage
     // Set bounds for type parameters
 
     // Add supertypes to classes
+    vertragEClass.getESuperTypes().add(this.getElement());
+    handyEClass.getESuperTypes().add(this.getElement());
 
     // Initialize classes and features; add operations and parameters
     initEClass(modelEClass, Model.class, "Model", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getModel_Vertrags(), this.getVertrag(), null, "vertrags", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getModel_Elements(), this.getElement(), null, "elements", null, 0, -1, Model.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(elementEClass, Element.class, "Element", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getElement_Name(), ecorePackage.getEString(), "name", null, 0, 1, Element.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(vertragEClass, Vertrag.class, "Vertrag", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getVertrag_Name(), ecorePackage.getEString(), "name", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVertrag_Mindestvertragslaufzeit(), ecorePackage.getEInt(), "mindestvertragslaufzeit", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVertrag_Datenvolumen(), ecorePackage.getEInt(), "datenvolumen", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVertrag_Monatl_kosten(), ecorePackage.getEFloat(), "monatl_kosten", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVertrag_Netzanbieter(), ecorePackage.getEString(), "netzanbieter", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getVertrag_Internetseite(), ecorePackage.getEString(), "internetseite", null, 0, 1, Vertrag.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-    initEClass(gearetEClass, Gearet.class, "Gearet", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEAttribute(getGearet_Name(), ecorePackage.getEString(), "name", null, 0, 1, Gearet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGearet_System(), ecorePackage.getEBoolean(), "system", null, 0, 1, Gearet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGearet_Marke(), ecorePackage.getEBoolean(), "marke", null, 0, 1, Gearet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getGearet_Speicher(), ecorePackage.getEBoolean(), "speicher", null, 0, 1, Gearet.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEClass(handyEClass, Handy.class, "Handy", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getHandy_System(), ecorePackage.getEString(), "system", null, 0, 1, Handy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHandy_Marke(), ecorePackage.getEString(), "marke", null, 0, 1, Handy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getHandy_Speicher(), ecorePackage.getEInt(), "speicher", null, 0, 1, Handy.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

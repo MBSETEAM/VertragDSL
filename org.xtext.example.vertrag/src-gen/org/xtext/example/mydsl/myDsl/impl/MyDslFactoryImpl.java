@@ -66,8 +66,9 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
     switch (eClass.getClassifierID())
     {
       case MyDslPackage.MODEL: return createModel();
+      case MyDslPackage.ELEMENT: return createElement();
       case MyDslPackage.VERTRAG: return createVertrag();
-      case MyDslPackage.GEARET: return createGearet();
+      case MyDslPackage.HANDY: return createHandy();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -89,6 +90,17 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
+  public Element createElement()
+  {
+    ElementImpl element = new ElementImpl();
+    return element;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   public Vertrag createVertrag()
   {
     VertragImpl vertrag = new VertragImpl();
@@ -100,10 +112,10 @@ public class MyDslFactoryImpl extends EFactoryImpl implements MyDslFactory
    * <!-- end-user-doc -->
    * @generated
    */
-  public Gearet createGearet()
+  public Handy createHandy()
   {
-    GearetImpl gearet = new GearetImpl();
-    return gearet;
+    HandyImpl handy = new HandyImpl();
+    return handy;
   }
 
   /**

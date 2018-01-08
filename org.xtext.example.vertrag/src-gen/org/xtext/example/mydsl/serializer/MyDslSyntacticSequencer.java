@@ -10,6 +10,7 @@ import org.eclipse.xtext.IGrammarAccess;
 import org.eclipse.xtext.RuleCall;
 import org.eclipse.xtext.nodemodel.INode;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.AbstractElementAlias;
+import org.eclipse.xtext.serializer.analysis.GrammarAlias.AlternativeAlias;
 import org.eclipse.xtext.serializer.analysis.GrammarAlias.TokenAlias;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynNavigable;
 import org.eclipse.xtext.serializer.analysis.ISyntacticSequencerPDAProvider.ISynTransition;
@@ -20,31 +21,27 @@ import org.xtext.example.mydsl.services.MyDslGrammarAccess;
 public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected MyDslGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_Handy_RightCurlyBracketKeyword_3_a;
+	protected AbstractElementAlias match_Handy_RightCurlyBracketKeyword_3_p;
+	protected AbstractElementAlias match_Handy_Vertrag___RightCurlyBracketKeyword_3_p_or_RightCurlyBracketKeyword_5_p__q;
 	protected AbstractElementAlias match_Vertrag_RightCurlyBracketKeyword_5_a;
 	protected AbstractElementAlias match_Vertrag_RightCurlyBracketKeyword_5_p;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (MyDslGrammarAccess) access;
+		match_Handy_RightCurlyBracketKeyword_3_a = new TokenAlias(true, true, grammarAccess.getHandyAccess().getRightCurlyBracketKeyword_3());
+		match_Handy_RightCurlyBracketKeyword_3_p = new TokenAlias(true, false, grammarAccess.getHandyAccess().getRightCurlyBracketKeyword_3());
+		match_Handy_Vertrag___RightCurlyBracketKeyword_3_p_or_RightCurlyBracketKeyword_5_p__q = new AlternativeAlias(false, true, new TokenAlias(true, false, grammarAccess.getHandyAccess().getRightCurlyBracketKeyword_3()), new TokenAlias(true, false, grammarAccess.getVertragAccess().getRightCurlyBracketKeyword_5()));
 		match_Vertrag_RightCurlyBracketKeyword_5_a = new TokenAlias(true, true, grammarAccess.getVertragAccess().getRightCurlyBracketKeyword_5());
 		match_Vertrag_RightCurlyBracketKeyword_5_p = new TokenAlias(true, false, grammarAccess.getVertragAccess().getRightCurlyBracketKeyword_5());
 	}
 	
 	@Override
 	protected String getUnassignedRuleCallToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (ruleCall.getRule() == grammarAccess.getIDRule())
-			return getIDToken(semanticObject, ruleCall, node);
 		return "";
 	}
 	
-	/**
-	 * terminal ID  		: '^'?('a'..'z'|'A'..'Z'|'_') ('a'..'z'|'A'..'Z'|'_'|'0'..'9')*;
-	 */
-	protected String getIDToken(EObject semanticObject, RuleCall ruleCall, INode node) {
-		if (node != null)
-			return getTokenText(node);
-		return "";
-	}
 	
 	@Override
 	protected void emitUnassignedTokens(EObject semanticObject, ISynTransition transition, INode fromNode, INode toNode) {
@@ -52,7 +49,13 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Vertrag_RightCurlyBracketKeyword_5_a.equals(syntax))
+			if (match_Handy_RightCurlyBracketKeyword_3_a.equals(syntax))
+				emit_Handy_RightCurlyBracketKeyword_3_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Handy_RightCurlyBracketKeyword_3_p.equals(syntax))
+				emit_Handy_RightCurlyBracketKeyword_3_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Handy_Vertrag___RightCurlyBracketKeyword_3_p_or_RightCurlyBracketKeyword_5_p__q.equals(syntax))
+				emit_Handy_Vertrag___RightCurlyBracketKeyword_3_p_or_RightCurlyBracketKeyword_5_p__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Vertrag_RightCurlyBracketKeyword_5_a.equals(syntax))
 				emit_Vertrag_RightCurlyBracketKeyword_5_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Vertrag_RightCurlyBracketKeyword_5_p.equals(syntax))
 				emit_Vertrag_RightCurlyBracketKeyword_5_p(semanticObject, getLastNavigableState(), syntaxNodes);
@@ -60,6 +63,58 @@ public class MyDslSyntacticSequencer extends AbstractSyntacticSequencer {
 		}
 	}
 
+	/**
+	 * Ambiguous syntax:
+	 *     '}'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'handy' name=ID
+	 *     (rule start) (ambiguity) 'marke' marke=ID
+	 *     (rule start) (ambiguity) 'speicher' speicher=INT
+	 *     (rule start) (ambiguity) (rule start)
+	 *     marke=ID (ambiguity) 'handy' name=ID
+	 *     marke=ID (ambiguity) 'marke' marke=ID
+	 *     marke=ID (ambiguity) 'speicher' speicher=INT
+	 *     marke=ID (ambiguity) (rule end)
+	 *     name=ID '{' (ambiguity) 'handy' name=ID
+	 *     name=ID '{' (ambiguity) 'marke' marke=ID
+	 *     name=ID '{' (ambiguity) 'speicher' speicher=INT
+	 *     name=ID '{' (ambiguity) (rule end)
+	 *     speicher=INT (ambiguity) 'handy' name=ID
+	 *     speicher=INT (ambiguity) 'marke' marke=ID
+	 *     speicher=INT (ambiguity) 'speicher' speicher=INT
+	 *     speicher=INT (ambiguity) (rule end)
+	 *     system=ID (ambiguity) 'handy' name=ID
+	 *     system=ID (ambiguity) 'marke' marke=ID
+	 *     system=ID (ambiguity) 'speicher' speicher=INT
+	 *     system=ID (ambiguity) (rule end)
+	 */
+	protected void emit_Handy_RightCurlyBracketKeyword_3_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     '}'+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 */
+	protected void emit_Handy_RightCurlyBracketKeyword_3_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * Ambiguous syntax:
+	 *     ('}'+ | '}'+)?
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) (rule start)
+	 */
+	protected void emit_Handy_Vertrag___RightCurlyBracketKeyword_3_p_or_RightCurlyBracketKeyword_5_p__q(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * Ambiguous syntax:
 	 *     '}'*

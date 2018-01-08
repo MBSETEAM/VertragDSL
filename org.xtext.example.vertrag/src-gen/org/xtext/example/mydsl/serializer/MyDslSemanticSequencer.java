@@ -11,10 +11,8 @@ import org.eclipse.xtext.Action;
 import org.eclipse.xtext.Parameter;
 import org.eclipse.xtext.ParserRule;
 import org.eclipse.xtext.serializer.ISerializationContext;
-import org.eclipse.xtext.serializer.acceptor.SequenceFeeder;
 import org.eclipse.xtext.serializer.sequencer.AbstractDelegatingSemanticSequencer;
-import org.eclipse.xtext.serializer.sequencer.ITransientValueService.ValueTransient;
-import org.xtext.example.mydsl.myDsl.Gearet;
+import org.xtext.example.mydsl.myDsl.Handy;
 import org.xtext.example.mydsl.myDsl.Model;
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Vertrag;
@@ -34,8 +32,8 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == MyDslPackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
-			case MyDslPackage.GEARET:
-				sequence_Gearet(context, (Gearet) semanticObject); 
+			case MyDslPackage.HANDY:
+				sequence_Handy(context, (Handy) semanticObject); 
 				return; 
 			case MyDslPackage.MODEL:
 				sequence_Model(context, (Model) semanticObject); 
@@ -50,28 +48,14 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
-	 *     Gearet returns Gearet
+	 *     Element returns Handy
+	 *     Handy returns Handy
 	 *
 	 * Constraint:
-	 *     (name=ID system?=ID marke?=ID speicher?=ID)
+	 *     ((marke=ID | speicher=INT)? (name=ID system=ID?)?)+
 	 */
-	protected void sequence_Gearet(ISerializationContext context, Gearet semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GEARET__NAME) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GEARET__NAME));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GEARET__SYSTEM) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GEARET__SYSTEM));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GEARET__MARKE) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GEARET__MARKE));
-			if (transientValues.isValueTransient(semanticObject, MyDslPackage.Literals.GEARET__SPEICHER) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, MyDslPackage.Literals.GEARET__SPEICHER));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getGearetAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
-		feeder.accept(grammarAccess.getGearetAccess().getSystemIDTerminalRuleCall_3_0(), semanticObject.isSystem());
-		feeder.accept(grammarAccess.getGearetAccess().getMarkeIDTerminalRuleCall_4_0(), semanticObject.isMarke());
-		feeder.accept(grammarAccess.getGearetAccess().getSpeicherIDTerminalRuleCall_5_0(), semanticObject.isSpeicher());
-		feeder.finish();
+	protected void sequence_Handy(ISerializationContext context, Handy semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -80,7 +64,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	 *     Model returns Model
 	 *
 	 * Constraint:
-	 *     vertrags+=Vertrag+
+	 *     elements+=Element+
 	 */
 	protected void sequence_Model(ISerializationContext context, Model semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
@@ -89,6 +73,7 @@ public class MyDslSemanticSequencer extends AbstractDelegatingSemanticSequencer 
 	
 	/**
 	 * Contexts:
+	 *     Element returns Vertrag
 	 *     Vertrag returns Vertrag
 	 *
 	 * Constraint:

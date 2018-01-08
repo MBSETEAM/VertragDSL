@@ -68,13 +68,13 @@ public interface MyDslPackage extends EPackage
   int MODEL = 0;
 
   /**
-   * The feature id for the '<em><b>Vertrags</b></em>' containment reference list.
+   * The feature id for the '<em><b>Elements</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int MODEL__VERTRAGS = 0;
+  int MODEL__ELEMENTS = 0;
 
   /**
    * The number of structural features of the '<em>Model</em>' class.
@@ -86,14 +86,14 @@ public interface MyDslPackage extends EPackage
   int MODEL_FEATURE_COUNT = 1;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl <em>Vertrag</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementImpl <em>Element</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.myDsl.impl.VertragImpl
-   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getVertrag()
+   * @see org.xtext.example.mydsl.myDsl.impl.ElementImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getElement()
    * @generated
    */
-  int VERTRAG = 1;
+  int ELEMENT = 1;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -102,7 +102,35 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__NAME = 0;
+  int ELEMENT__NAME = 0;
+
+  /**
+   * The number of structural features of the '<em>Element</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ELEMENT_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl <em>Vertrag</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see org.xtext.example.mydsl.myDsl.impl.VertragImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getVertrag()
+   * @generated
+   */
+  int VERTRAG = 2;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VERTRAG__NAME = ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>Mindestvertragslaufzeit</b></em>' attribute.
@@ -111,7 +139,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__MINDESTVERTRAGSLAUFZEIT = 1;
+  int VERTRAG__MINDESTVERTRAGSLAUFZEIT = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Datenvolumen</b></em>' attribute.
@@ -120,7 +148,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__DATENVOLUMEN = 2;
+  int VERTRAG__DATENVOLUMEN = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Monatl kosten</b></em>' attribute.
@@ -129,7 +157,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__MONATL_KOSTEN = 3;
+  int VERTRAG__MONATL_KOSTEN = ELEMENT_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Netzanbieter</b></em>' attribute.
@@ -138,7 +166,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__NETZANBIETER = 4;
+  int VERTRAG__NETZANBIETER = ELEMENT_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Internetseite</b></em>' attribute.
@@ -147,7 +175,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG__INTERNETSEITE = 5;
+  int VERTRAG__INTERNETSEITE = ELEMENT_FEATURE_COUNT + 4;
 
   /**
    * The number of structural features of the '<em>Vertrag</em>' class.
@@ -156,17 +184,17 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int VERTRAG_FEATURE_COUNT = 6;
+  int VERTRAG_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 5;
 
   /**
-   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.GearetImpl <em>Gearet</em>}' class.
+   * The meta object id for the '{@link org.xtext.example.mydsl.myDsl.impl.HandyImpl <em>Handy</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see org.xtext.example.mydsl.myDsl.impl.GearetImpl
-   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getGearet()
+   * @see org.xtext.example.mydsl.myDsl.impl.HandyImpl
+   * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getHandy()
    * @generated
    */
-  int GEARET = 2;
+  int HANDY = 3;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -175,7 +203,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GEARET__NAME = 0;
+  int HANDY__NAME = ELEMENT__NAME;
 
   /**
    * The feature id for the '<em><b>System</b></em>' attribute.
@@ -184,7 +212,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GEARET__SYSTEM = 1;
+  int HANDY__SYSTEM = ELEMENT_FEATURE_COUNT + 0;
 
   /**
    * The feature id for the '<em><b>Marke</b></em>' attribute.
@@ -193,7 +221,7 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GEARET__MARKE = 2;
+  int HANDY__MARKE = ELEMENT_FEATURE_COUNT + 1;
 
   /**
    * The feature id for the '<em><b>Speicher</b></em>' attribute.
@@ -202,16 +230,16 @@ public interface MyDslPackage extends EPackage
    * @generated
    * @ordered
    */
-  int GEARET__SPEICHER = 3;
+  int HANDY__SPEICHER = ELEMENT_FEATURE_COUNT + 2;
 
   /**
-   * The number of structural features of the '<em>Gearet</em>' class.
+   * The number of structural features of the '<em>Handy</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int GEARET_FEATURE_COUNT = 4;
+  int HANDY_FEATURE_COUNT = ELEMENT_FEATURE_COUNT + 3;
 
 
   /**
@@ -225,15 +253,36 @@ public interface MyDslPackage extends EPackage
   EClass getModel();
 
   /**
-   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Model#getVertrags <em>Vertrags</em>}'.
+   * Returns the meta object for the containment reference list '{@link org.xtext.example.mydsl.myDsl.Model#getElements <em>Elements</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the containment reference list '<em>Vertrags</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Model#getVertrags()
+   * @return the meta object for the containment reference list '<em>Elements</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Model#getElements()
    * @see #getModel()
    * @generated
    */
-  EReference getModel_Vertrags();
+  EReference getModel_Elements();
+
+  /**
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Element <em>Element</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Element</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Element
+   * @generated
+   */
+  EClass getElement();
+
+  /**
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Element#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Name</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Element#getName()
+   * @see #getElement()
+   * @generated
+   */
+  EAttribute getElement_Name();
 
   /**
    * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Vertrag <em>Vertrag</em>}'.
@@ -244,17 +293,6 @@ public interface MyDslPackage extends EPackage
    * @generated
    */
   EClass getVertrag();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Vertrag#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Vertrag#getName()
-   * @see #getVertrag()
-   * @generated
-   */
-  EAttribute getVertrag_Name();
 
   /**
    * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Vertrag#getMindestvertragslaufzeit <em>Mindestvertragslaufzeit</em>}'.
@@ -312,58 +350,47 @@ public interface MyDslPackage extends EPackage
   EAttribute getVertrag_Internetseite();
 
   /**
-   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Gearet <em>Gearet</em>}'.
+   * Returns the meta object for class '{@link org.xtext.example.mydsl.myDsl.Handy <em>Handy</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for class '<em>Gearet</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Gearet
+   * @return the meta object for class '<em>Handy</em>'.
+   * @see org.xtext.example.mydsl.myDsl.Handy
    * @generated
    */
-  EClass getGearet();
+  EClass getHandy();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Gearet#getName <em>Name</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Name</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Gearet#getName()
-   * @see #getGearet()
-   * @generated
-   */
-  EAttribute getGearet_Name();
-
-  /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Gearet#isSystem <em>System</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Handy#getSystem <em>System</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>System</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Gearet#isSystem()
-   * @see #getGearet()
+   * @see org.xtext.example.mydsl.myDsl.Handy#getSystem()
+   * @see #getHandy()
    * @generated
    */
-  EAttribute getGearet_System();
+  EAttribute getHandy_System();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Gearet#isMarke <em>Marke</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Handy#getMarke <em>Marke</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Marke</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Gearet#isMarke()
-   * @see #getGearet()
+   * @see org.xtext.example.mydsl.myDsl.Handy#getMarke()
+   * @see #getHandy()
    * @generated
    */
-  EAttribute getGearet_Marke();
+  EAttribute getHandy_Marke();
 
   /**
-   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Gearet#isSpeicher <em>Speicher</em>}'.
+   * Returns the meta object for the attribute '{@link org.xtext.example.mydsl.myDsl.Handy#getSpeicher <em>Speicher</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the meta object for the attribute '<em>Speicher</em>'.
-   * @see org.xtext.example.mydsl.myDsl.Gearet#isSpeicher()
-   * @see #getGearet()
+   * @see org.xtext.example.mydsl.myDsl.Handy#getSpeicher()
+   * @see #getHandy()
    * @generated
    */
-  EAttribute getGearet_Speicher();
+  EAttribute getHandy_Speicher();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -399,12 +426,30 @@ public interface MyDslPackage extends EPackage
     EClass MODEL = eINSTANCE.getModel();
 
     /**
-     * The meta object literal for the '<em><b>Vertrags</b></em>' containment reference list feature.
+     * The meta object literal for the '<em><b>Elements</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated
      */
-    EReference MODEL__VERTRAGS = eINSTANCE.getModel_Vertrags();
+    EReference MODEL__ELEMENTS = eINSTANCE.getModel_Elements();
+
+    /**
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.ElementImpl <em>Element</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see org.xtext.example.mydsl.myDsl.impl.ElementImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getElement()
+     * @generated
+     */
+    EClass ELEMENT = eINSTANCE.getElement();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute ELEMENT__NAME = eINSTANCE.getElement_Name();
 
     /**
      * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl <em>Vertrag</em>}' class.
@@ -415,14 +460,6 @@ public interface MyDslPackage extends EPackage
      * @generated
      */
     EClass VERTRAG = eINSTANCE.getVertrag();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute VERTRAG__NAME = eINSTANCE.getVertrag_Name();
 
     /**
      * The meta object literal for the '<em><b>Mindestvertragslaufzeit</b></em>' attribute feature.
@@ -465,22 +502,14 @@ public interface MyDslPackage extends EPackage
     EAttribute VERTRAG__INTERNETSEITE = eINSTANCE.getVertrag_Internetseite();
 
     /**
-     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.GearetImpl <em>Gearet</em>}' class.
+     * The meta object literal for the '{@link org.xtext.example.mydsl.myDsl.impl.HandyImpl <em>Handy</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
-     * @see org.xtext.example.mydsl.myDsl.impl.GearetImpl
-     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getGearet()
+     * @see org.xtext.example.mydsl.myDsl.impl.HandyImpl
+     * @see org.xtext.example.mydsl.myDsl.impl.MyDslPackageImpl#getHandy()
      * @generated
      */
-    EClass GEARET = eINSTANCE.getGearet();
-
-    /**
-     * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute GEARET__NAME = eINSTANCE.getGearet_Name();
+    EClass HANDY = eINSTANCE.getHandy();
 
     /**
      * The meta object literal for the '<em><b>System</b></em>' attribute feature.
@@ -488,7 +517,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GEARET__SYSTEM = eINSTANCE.getGearet_System();
+    EAttribute HANDY__SYSTEM = eINSTANCE.getHandy_System();
 
     /**
      * The meta object literal for the '<em><b>Marke</b></em>' attribute feature.
@@ -496,7 +525,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GEARET__MARKE = eINSTANCE.getGearet_Marke();
+    EAttribute HANDY__MARKE = eINSTANCE.getHandy_Marke();
 
     /**
      * The meta object literal for the '<em><b>Speicher</b></em>' attribute feature.
@@ -504,7 +533,7 @@ public interface MyDslPackage extends EPackage
      * <!-- end-user-doc -->
      * @generated
      */
-    EAttribute GEARET__SPEICHER = eINSTANCE.getGearet_Speicher();
+    EAttribute HANDY__SPEICHER = eINSTANCE.getHandy_Speicher();
 
   }
 

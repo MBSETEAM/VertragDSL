@@ -8,7 +8,6 @@ import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.xtext.example.mydsl.myDsl.MyDslPackage;
 import org.xtext.example.mydsl.myDsl.Vertrag;
@@ -21,7 +20,6 @@ import org.xtext.example.mydsl.myDsl.Vertrag;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl#getName <em>Name</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl#getMindestvertragslaufzeit <em>Mindestvertragslaufzeit</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl#getDatenvolumen <em>Datenvolumen</em>}</li>
  *   <li>{@link org.xtext.example.mydsl.myDsl.impl.VertragImpl#getMonatl_kosten <em>Monatl kosten</em>}</li>
@@ -31,28 +29,8 @@ import org.xtext.example.mydsl.myDsl.Vertrag;
  *
  * @generated
  */
-public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
+public class VertragImpl extends ElementImpl implements Vertrag
 {
-  /**
-   * The default value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected static final String NAME_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected String name = NAME_EDEFAULT;
-
   /**
    * The default value of the '{@link #getMindestvertragslaufzeit() <em>Mindestvertragslaufzeit</em>}' attribute.
    * <!-- begin-user-doc -->
@@ -172,29 +150,6 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
   protected EClass eStaticClass()
   {
     return MyDslPackage.Literals.VERTRAG;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public String getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public void setName(String newName)
-  {
-    String oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, MyDslPackage.VERTRAG__NAME, oldName, name));
   }
 
   /**
@@ -322,8 +277,6 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
   {
     switch (featureID)
     {
-      case MyDslPackage.VERTRAG__NAME:
-        return getName();
       case MyDslPackage.VERTRAG__MINDESTVERTRAGSLAUFZEIT:
         return getMindestvertragslaufzeit();
       case MyDslPackage.VERTRAG__DATENVOLUMEN:
@@ -348,9 +301,6 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
   {
     switch (featureID)
     {
-      case MyDslPackage.VERTRAG__NAME:
-        setName((String)newValue);
-        return;
       case MyDslPackage.VERTRAG__MINDESTVERTRAGSLAUFZEIT:
         setMindestvertragslaufzeit((Integer)newValue);
         return;
@@ -380,9 +330,6 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
   {
     switch (featureID)
     {
-      case MyDslPackage.VERTRAG__NAME:
-        setName(NAME_EDEFAULT);
-        return;
       case MyDslPackage.VERTRAG__MINDESTVERTRAGSLAUFZEIT:
         setMindestvertragslaufzeit(MINDESTVERTRAGSLAUFZEIT_EDEFAULT);
         return;
@@ -412,8 +359,6 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
   {
     switch (featureID)
     {
-      case MyDslPackage.VERTRAG__NAME:
-        return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       case MyDslPackage.VERTRAG__MINDESTVERTRAGSLAUFZEIT:
         return mindestvertragslaufzeit != MINDESTVERTRAGSLAUFZEIT_EDEFAULT;
       case MyDslPackage.VERTRAG__DATENVOLUMEN:
@@ -439,9 +384,7 @@ public class VertragImpl extends MinimalEObjectImpl.Container implements Vertrag
     if (eIsProxy()) return super.toString();
 
     StringBuffer result = new StringBuffer(super.toString());
-    result.append(" (name: ");
-    result.append(name);
-    result.append(", mindestvertragslaufzeit: ");
+    result.append(" (mindestvertragslaufzeit: ");
     result.append(mindestvertragslaufzeit);
     result.append(", datenvolumen: ");
     result.append(datenvolumen);

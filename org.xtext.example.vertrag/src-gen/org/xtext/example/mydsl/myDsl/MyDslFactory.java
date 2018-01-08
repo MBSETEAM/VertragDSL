@@ -33,6 +33,15 @@ public interface MyDslFactory extends EFactory
   Model createModel();
 
   /**
+   * Returns a new object of class '<em>Element</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Element</em>'.
+   * @generated
+   */
+  Element createElement();
+
+  /**
    * Returns a new object of class '<em>Vertrag</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -42,13 +51,13 @@ public interface MyDslFactory extends EFactory
   Vertrag createVertrag();
 
   /**
-   * Returns a new object of class '<em>Gearet</em>'.
+   * Returns a new object of class '<em>Handy</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Gearet</em>'.
+   * @return a new object of class '<em>Handy</em>'.
    * @generated
    */
-  Gearet createGearet();
+  Handy createHandy();
 
   /**
    * Returns the package supported by this factory.
