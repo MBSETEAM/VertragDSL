@@ -18,7 +18,7 @@ class MyDslGenerator extends AbstractGenerator {
 
 	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
 		/*fsa.generateFile('greetings.txt', 'People to greet: ' + 
-			resource.allContents
+			resource.allContents																																																																																																	
 				.filter(Greeting)
 				.map[name]
 				.join(', '))*/
