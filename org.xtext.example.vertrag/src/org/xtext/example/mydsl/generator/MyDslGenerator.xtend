@@ -24,7 +24,7 @@ class MyDslGenerator extends AbstractGenerator {
 				.join(', '))*/
 		fsa.generateFile("Main.java", "asdasd");
 	}
-	
+	//iuniuinu
 	
 	def compile(Vertrag vertrag) {
 		'''
