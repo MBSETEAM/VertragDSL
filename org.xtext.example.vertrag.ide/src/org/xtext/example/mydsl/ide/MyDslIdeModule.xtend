@@ -9,4 +9,5 @@ package org.xtext.example.mydsl.ide
  */
 class MyDslIdeModule extends AbstractMyDslIdeModule {
 	
+	
 }
