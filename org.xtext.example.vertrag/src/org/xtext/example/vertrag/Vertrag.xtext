@@ -28,7 +28,7 @@ Vertrag:
 	'}'
 ;
 
-// Definition von Gearet
+// Definition von Gearet Github
 Handy :
 	'handy' name=ID '{'
 		('system' system=ID)     ? &
