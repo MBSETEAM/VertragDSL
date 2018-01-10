@@ -8,7 +8,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 public class MAin {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws InterruptedException{
 		// TODO Auto-generated method stub
 		
 		System.setProperty("webdriver.chrome.driver", "C:\\Users\\zbozi\\Downloads\\chromedriver_win32\\chromedriver.exe");
