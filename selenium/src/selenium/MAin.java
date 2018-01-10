@@ -17,6 +17,12 @@ public class MAin {
 		WebDriver driver = new ChromeDriver();
 		driver.get("https://www.check24.de/handyvertrag/samsung-galaxy-s8/?data_included=0&minutes_included=flatrate&hwprop_model=185&young_tariff=no&orderby=empfehlung_preis&hwprop_color=egal&hwprop_memorysize=egal");
 		
+		// load ajax
+		JavascriptExecutor jse = (JavascriptExecutor) driver;
+		for (int i = 0; i < 10; i++) {
+			Thread.sleep(500);
+			jse.executeScript("window.scrollBy(0,8000)", "");
+		}
 		// Liste mit allen Containern mit der Klasse "ng-scope"
 		List <WebElement> divClassProvider = driver.findElements(By.tagName("product-item"));
 		
