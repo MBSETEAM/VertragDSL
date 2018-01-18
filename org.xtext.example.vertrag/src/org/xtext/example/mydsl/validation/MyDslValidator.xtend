@@ -3,6 +3,9 @@
  */
 package org.xtext.example.mydsl.validation
 
+import org.eclipse.xtext.validation.Check
+import org.xtext.example.mydsl.myDsl.Vertrag
+import org.xtext.example.mydsl.myDsl.MyDslPackage
 
 /**
  * This class contains custom validation rules. 
@@ -22,5 +25,13 @@ class MyDslValidator extends AbstractMyDslValidator {
 //					INVALID_NAME)
 //		}
 //	}
+	
+	@Check
+	def Check(Vertrag vertrag) {
+		if(vertrag.datenvolumen <= 0) {
+			warning('Datenvolumen muss >= 0', MyDslPackage.Literals.VERTRAG__DATENVOLUMEN,'invalidName');
+		}
+	}
+	
 	
 }
